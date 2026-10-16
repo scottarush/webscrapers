@@ -1,0 +1,23 @@
+[Unit]
+Description=ctime-rss: refresh China Times feeds (oneshot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ctime-rss
+Group=ctime-rss
+WorkingDirectory=/opt/ctime-rss
+ExecStart=/opt/ctime-rss/.venv/bin/ctime-rss --config-dir /opt/ctime-rss/config once
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/feeds /var/lib/ctime-rss /var/log/ctime-rss
+RestrictAddressFamilies=AF_INET AF_INET6
+IPAddressAllow=192.168.0.0/16
+IPAddressDeny=any
+
+[Install]
+WantedBy=multi-user.target

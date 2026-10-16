@@ -1,0 +1,25 @@
+# Offline test profile for `make check` — build reads fixtures/, never the network.
+base_url: http://localhost:8080/feeds
+user_agent: "ChinaTimesRSS-test/1.0"
+contact: abuse@localhost
+politeness: { rps_per_host: 1, host_concurrency: 1, jitter_s: [0, 0], max_requests_per_run: 5 }
+
+feeds:
+  - slug: realtime
+    title: "中國時報 – 即時新聞"
+    site_url: https://www.chinatimes.com/realtimenews/
+    kind: html
+    url: https://www.chinatimes.com/realtimenews/
+    robots: allowed
+    enabled: true
+    author: 中時新聞網
+    encoding: utf-8
+    max_items: 200
+    html:
+      item: div.articlebox-compact
+      title: h3.title a
+      link: h3.title a
+      summary: p.intro
+      image: { selector: img.photo, attr: src }
+      list_date: time
+    item_date: { selector: time, attr: datetime, format: "%Y-%m-%d %H:%M", tz: Asia/Taipei }

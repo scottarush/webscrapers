@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>測試</title><link>https://www.chinatimes.com/</link>
+<item><title>CDATA 條目 &lt;特殊&gt;</title>
+<link>https://www.chinatimes.com/realtimenews/20261016000010-260407</link>
+<guid>https://www.chinatimes.com/realtimenews/20261016000010-260407</guid>
+<pubDate>Fri, 16 Oct 2026 12:00:00 +0800</pubDate>
+<description><![CDATA[含 <b>HTML</b> 的摘要]]></description></item>
+<item><title>無日期條目</title>
+<link>https://www.chinatimes.com/realtimenews/20261016000011-260407?ctrack=x</link>
+<guid>https://www.chinatimes.com/realtimenews/20261016000011-260407</guid>
+<description>無 pubDate</description></item>
+</channel></rss>

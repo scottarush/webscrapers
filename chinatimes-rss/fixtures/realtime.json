@@ -1,0 +1,10 @@
+{"data": {"list": [
+ {"id": "a1", "title": "JSON 條目一", "url":
+  "https://www.chinatimes.com/realtimenews/20261016000020-260407",
+  "publish_time": "2026-10-16T12:00:00+08:00", "summary": "摘要一",
+  "author": "記者甲", "images": ["https://images.chinatimes.com/j1.jpg"]},
+ {"id": "a2", "title": "JSON 條目二", "url":
+  "https://www.chinatimes.com/realtimenews/20261016000021-260407",
+  "publish_time": "2026-10-16 11:00", "summary": "摘要二", "author": "",
+  "images": "/imgs/j2.jpg"}
+]}}

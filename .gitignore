@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.log
+scratch/
+chinatimes-rss/out-test/
+chinatimes-rss/state-test/
+chinatimes-rss/logs-test/
+chinatimes-rss/local-run/
+mutagen.yml.lock

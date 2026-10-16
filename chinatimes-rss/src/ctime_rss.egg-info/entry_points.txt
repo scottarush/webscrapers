@@ -1,0 +1,2 @@
+[console_scripts]
+ctime-rss = ctime_rss.cli:main

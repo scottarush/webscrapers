@@ -1,0 +1,7 @@
+# test profile: everything under ./ so `make check` needs no root and no network
+output_dir: ./out-test
+state_dir: ./state-test
+log_dir: ./logs-test
+log_level: INFO
+summary_chars: 1500
+max_age_days: 7

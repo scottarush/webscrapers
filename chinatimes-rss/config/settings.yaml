@@ -1,0 +1,8 @@
+# ctime-rss global knobs
+output_dir: /srv/feeds
+state_dir: /var/lib/ctime-rss
+log_dir: /var/log/ctime-rss
+log_level: INFO
+summary_chars: 1500    # hard cap per item summary
+max_age_days: 7        # drop never-published items older than this
+# ping_url: https://healthchecks.example.lan/ping/<uuid>   # optional end-of-run ping

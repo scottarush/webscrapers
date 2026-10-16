@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: ctime-rss
+Version: 1.0.0
+Summary: Self-hosted RSS publisher for China Times (chinatimes.com)
+Requires-Python: >=3.11
+Requires-Dist: feedparser==6.0.14
+Requires-Dist: lxml==6.1.3
+Requires-Dist: cssselect==1.6.0
+Requires-Dist: PyYAML==6.0.3
+Requires-Dist: requests==2.34.2
+Provides-Extra: dev
+Requires-Dist: pytest==9.1.1; extra == "dev"
+Requires-Dist: ruff==0.17.1; extra == "dev"

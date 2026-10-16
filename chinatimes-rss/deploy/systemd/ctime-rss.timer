@@ -1,0 +1,12 @@
+[Unit]
+Description=Run ctime-rss every 10 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+RandomizedDelaySec=90
+AccuracySec=1s
+Unit=ctime-rss.service
+
+[Install]
+WantedBy=timers.target

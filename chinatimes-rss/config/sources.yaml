@@ -1,0 +1,100 @@
+# chinatimes-rss source registry — the ONLY file a human edits when the site changes.
+#
+# Discovery (2026-10-16): every official RSS candidate returned 404 (chinatimes.com)
+# or 522 (wantchinatimes.com); homepage announces no rss/atom alternates.
+# Path taken: server-rendered HTML listings (kind: html). Section pages are static,
+# paginate with ?page=N, and robots.txt (User-agent: *; only Disallow /cdn-cgi/rum
+# and /ads/) allows every listing path used here.
+
+base_url: http://100.111.235.2:8080/feeds
+user_agent: "ChinaTimesRSS/1.0 (+https://aiserver.lan/feeds/README; contact: abuse@aiserver.lan)"
+contact: abuse@aiserver.lan
+
+politeness:
+  rps_per_host: 1
+  host_concurrency: 1
+  jitter_s: [2, 4]
+  max_requests_per_run: 40   # 8 sections x (2 pages + margin) + 1 robots
+  robots_cache_h: 6
+
+# Shared HTML shape of every chinatimes listing page (verified 2026-10-16):
+#   div.articlebox-compact  >  h3.title > a          (title + relative href)
+#                              time[datetime]        "YYYY-MM-DD HH:MM" site tz (Asia/Taipei)
+#                              p.intro               summary text
+#                              img.photo[src]        absolute URL (data-src fallback kept)
+defaults: &listing
+  kind: html
+  robots: allowed
+  encoding: utf-8
+  pages: 2
+  max_items: 200
+  author: 中時新聞網          # site-wide byline; listing pages carry no per-item author
+  html:
+    item: div.articlebox-compact
+    title: h3.title a
+    link: h3.title a
+    summary: p.intro
+    image: { selector: img.photo, attr: src }
+    list_date: time
+  item_date:
+    selector: time
+    attr: datetime
+    format: "%Y-%m-%d %H:%M"
+    tz: Asia/Taipei
+
+feeds:
+  - slug: realtime
+    <<: *listing
+    title: "中國時報 – 即時新聞"
+    site_url: https://www.chinatimes.com/realtimenews/
+    url: https://www.chinatimes.com/realtimenews/
+
+  - slug: focal
+    <<: *listing
+    title: "中國時報 – 重點聞"
+    site_url: https://www.chinatimes.com/money/focus/
+    url: https://www.chinatimes.com/money/focus/   # /focal/ is 404; money/focus verified 200
+
+  - slug: china
+    <<: *listing
+    title: "中國時報 – 兩岸"
+    site_url: https://www.chinatimes.com/chinese/total/
+    url: https://www.chinatimes.com/chinese/total/
+
+  - slug: world
+    <<: *listing
+    title: "中國時報 – 國際"
+    site_url: https://www.chinatimes.com/world/total/
+    url: https://www.chinatimes.com/world/total/
+
+  - slug: money
+    <<: *listing
+    title: "中國時報 – 財經"
+    site_url: https://www.chinatimes.com/money/total/
+    url: https://www.chinatimes.com/money/total/
+
+  - slug: sports
+    <<: *listing
+    title: "中國時報 – 體育"
+    site_url: https://www.chinatimes.com/sports/total/
+    url: https://www.chinatimes.com/sports/total/
+
+  - slug: showbiz
+    <<: *listing
+    title: "中國時報 – 娛樂"
+    site_url: https://www.chinatimes.com/star/total/
+    url: https://www.chinatimes.com/star/total/
+
+  - slug: opinion
+    <<: *listing
+    title: "中國時報 – 言論"
+    site_url: https://www.chinatimes.com/opinion/total/
+    url: https://www.chinatimes.com/opinion/total/
+    pages: 1
+
+  - slug: all
+    kind: rss
+    title: "中國時報 – 全部"
+    site_url: https://www.chinatimes.com/
+    merge_of: [realtime, focal, china, world, money, sports, showbiz, opinion]
+    enabled: true

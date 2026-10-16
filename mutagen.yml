@@ -1,0 +1,27 @@
+sync:
+  defaults:
+    mode: "two-way-resolved"
+    stageMode: "neighboring"
+    ignore:
+      vcs: true
+      paths:
+
+        # Version control & IDE configs
+        - ".git"
+        - ".idea/"
+        - ".vscode/"
+
+        # General build outputs & caches (server & local)
+        - "bin/"
+        - "build/"
+        - "dist/"
+        - "__pycache__/"
+        - "*.pyc"
+        - ".venv/"
+        - "venv/"
+        - "*.log"
+        # scratch area for llm
+        - "scratch/"
+  webscrapers:
+    alpha: "."
+    beta: "scott@aiserver:~/projects/webscrapers"
